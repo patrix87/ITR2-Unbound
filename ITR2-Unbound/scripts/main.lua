@@ -178,12 +178,12 @@ RegisterKeyBind(Key.G, function()
     fun:ToggleGodMode()
 end)
 
+RegisterKeyBind(Key.X, function()
+    fun:testMethod()
+end)
+
+RegisterKeyBind(Key.T, function()
+    fun:TravelToPeninsula()
+end)
+
 ]]
-
--- RegisterKeyBind(Key.X, function()
---     fun:testMethod()
--- end)
-
--- RegisterKeyBind(Key.T, function()
---     fun:TravelToPeninsula()
--- end)

@@ -109,48 +109,51 @@ Level.Test.WaterTest
 Level.Test.WaterTest2
 ]] 
 
--- function testMethod()
---     local UFLGeneral = FindFirstOf("UFLGeneral")
---     local map = UFLGeneral:RequestGameplayTag("Level.Radius.Peninsula.Gate2")
---     print(map:ToString())
--- end
+--[[
 
--- function fun:testMethod()
---     local Object = "UFLGeneral"
---     local Instance = FindFirstOf(Object)
---     if not Instance:IsValid() then
---         print("No Instance of class: " .. Object .. " found.")
---     else 
---         print("Instance of class: " .. Object .. " found.")
---         print(toString(Instance))
---         local map = UFLGeneral:RequestGameplayTag("Level.Radius.Peninsula.Gate2")
---         print(map:ToString())
---     end
--- end
+function testMethod()
+    local UFLGeneral = FindFirstOf("UFLGeneral")
+    local map = UFLGeneral:RequestGameplayTag("Level.Radius.Peninsula.Gate2")
+    print(map:ToString())
+end
+function fun:testMethod()
+    local Object = "UFLGeneral"
+    local Instance = FindFirstOf(Object)
+    if not Instance:IsValid() then
+        print("No Instance of class: " .. Object .. " found.")
+    else 
+        print("Instance of class: " .. Object .. " found.")
+        print(toString(Instance))
+        local map = UFLGeneral:RequestGameplayTag("Level.Radius.Peninsula.Gate2")
+        print(map:ToString())
+    end
+end
+function fun:testMethod()
+    local Object = "CheatPanel"
+    local Instance = FindFirstOf(Object)
+    if not Instance:IsValid() then
+        print("No Instance of class: " .. Object .. " found.")
+    else 
+        print("Instance of class: " .. Object .. " found.")
+        print(toString(Instance))
+    end
+end
+function fun:TravelToPeninsula()
+    local RadiusLevelSubsystem = FindFirstOf("RadiusLevelSubsystem")
+    local levelName = RadiusLevelSubsystem:GetCurrentLevelName()
+    local levelTag = RadiusLevelSubsystem:GetCurrentLevel()
+    if debugmode then print("Current Level: " .. levelName:ToString()) end
+    print(tostring(levelTag))
+    RadiusLevelSubsystem:ValidateLevelTag(levelTag)
+    print(tostring(RadiusLevelSubsystem:IsLevelAvailable(levelTag)))
+    RadiusLevelSubsystem:LoadLevel(levelTag,true,true,true) -- Crash the game
+end
 
--- function fun:testMethod()
---     local Object = "CheatPanel"
---     local Instance = FindFirstOf(Object)
---     if not Instance:IsValid() then
---         print("No Instance of class: " .. Object .. " found.")
---     else 
---         print("Instance of class: " .. Object .. " found.")
---         print(toString(Instance))
---     end
--- end
-
--- function fun:TravelToPeninsula()
---     local RadiusLevelSubsystem = FindFirstOf("RadiusLevelSubsystem")
---     local levelName = RadiusLevelSubsystem:GetCurrentLevelName()
---     local levelTag = RadiusLevelSubsystem:GetCurrentLevel()
---     if debugmode then print("Current Level: " .. levelName:ToString()) end
---     print(tostring(levelTag))
---     RadiusLevelSubsystem:ValidateLevelTag(levelTag)
---     print(tostring(RadiusLevelSubsystem:IsLevelAvailable(levelTag)))
---     RadiusLevelSubsystem:LoadLevel(levelTag,true,true,true) -- Crash the game
--- end
+]] 
 
 --- THESE DO NOTHING AS FAR AS I CAN TELL ---
+
+--[[
 
 function fun:ToggleAiDebug()
     local RadiusCheatSubsystem = FindFirstOf("RadiusCheatSubsystem")
@@ -246,5 +249,6 @@ function fun:ToggleGodMode()
     local godMode = RadiusCheatSubsystem:IsGodMode()
     print("GodMode: " .. tostring(godMode))
 end
+]]
 
 return fun
