@@ -9,6 +9,22 @@ function fun:ToggleDebugMode()
     end
 end
 
+function fun:PlayerIsAlive()
+    local PlayerStatsComponent = FindFirstOf("PlayerStatsComponent")
+    local alive = false
+    if (PlayerStatsComponent) then
+        alive = PlayerStatsComponent:IsAlive()
+        if alive then
+            if debugmode then print("Player is alive.") end
+        else
+            if debugmode then print("Player is dead.") end
+        end
+    else
+        if debugmode then print("Waiting for PlayerStatsComponent to be available.") end
+    end
+    return alive
+end
+
 ---@param hunger number
 function fun:SetHunger(hunger)
     local PlayerStatsComponent = FindFirstOf("PlayerStatsComponent")

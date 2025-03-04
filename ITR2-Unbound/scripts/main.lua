@@ -15,15 +15,17 @@ local noHunger = false
 RegisterHook("/Script/IntoTheRadius2.RadiusGameMode:OnLevelLoaded", function()
     ExecuteWithDelay(1000, function()
         LoopAsync(500, function()
-            if (infiniteStamina) then
-                fun:SetStamina(100)
-                fun:SetHunger(10000)
-            end
-            if (infiniteHealth) then
-                fun:SetHealth(100)
-            end
-            if (noHunger) then
-                fun:SetHunger(10000)
+            if (fun:PlayerIsAlive()) then
+                if (infiniteStamina) then
+                    fun:SetStamina(100)
+                    fun:SetHunger(10000)
+                end
+                if (infiniteHealth) then
+                    fun:SetHealth(100)
+                end
+                if (noHunger) then
+                    fun:SetHunger(10000)
+                end
             end
             return false -- Loops forever
         end)
